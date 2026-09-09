@@ -1,7 +1,7 @@
 # HIVE V2 — Current Checkpoint
 
 Status: CANONICAL SOURCE PRESERVATION IN PROGRESS
-Date: 2026-09-08
+Date: 2026-09-09
 
 ## Canonical execution truth
 HIVE V1 remains the active implementation line until the formal V2 implementation transition is approved.
@@ -66,6 +66,7 @@ Then retrieve only additional canonical material needed for the requested increm
 - Frozen R01-R20 master identity verified as `HIVE-MASTER-SOURCE-V2.0-FROZEN.md`, R20 Architecture Freeze Review, 2026-08-31.
 - Exact frozen-master raw source promoted to `IMPORTABLE` with byte length/SHA-256/expected Git blob evidence via PR #101, merge `092e2f7c1ec038a751535a770dbab5f4e83f1e57`.
 - Objective V1 transition-readiness snapshot added via PR #102, merge `832b77e664a21d09d12c30b83808f8ad7b0e6ad0`.
+- Machine-readable implementation readiness snapshot: `docs/transition/V2-IMPLEMENTATION-READINESS.json`.
 
 ## Exact source preservation status
 `SOURCE_PRESERVATION_STATE = IMPORTABLE`
