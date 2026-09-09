@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-09-09",
+  "repository": "KayzenRoot/hive-v2",
+  "authoritativeCheckpoint": "docs/checkpoints/CURRENT.md",
+  "productImplementationAuthorized": false,
+  "memoryIndependent": false,
+  "gateFamilies": {
+    "sourceRefreeze": {
+      "state": "BLOCKED",
+      "blocker": "Exact R01-R20 original is IMPORTABLE but not yet byte-exact preserved and VERIFIED in Git.",
+      "sourcePreservationState": "IMPORTABLE",
+      "source": {
+        "filename": "HIVE-MASTER-SOURCE-V2.0-FROZEN.md",
+        "byteLength": 1334369,
+        "sha256": "990c441d5797ee3f8ec81a1f3337f83bb0516fcc0c2a79ef0ef9f4a150b020ee",
+        "expectedGitBlobSha": "6e2620854cb3180e02ac4c18fe21c93bb5dffdcd",
+        "targetPath": "docs/archive/HIVE-MASTER-SOURCE-V2.0-FROZEN.md",
+        "reconstructionUsed": false
+      },
+      "requiredBeforePass": [
+        "Exact Git archival preservation VERIFIED",
+        "R21/R22/HEDS reconciliation APPROVED",
+        "Canonical V2 Source Pack validated",
+        "R22 architecture/source re-freeze APPROVED",
+        "MEMORY_INDEPENDENT = true"
+      ],
+      "issue": 66
+    },
+    "v1Transition": {
+      "state": "BLOCKED",
+      "blocker": "HIVE V1 is still active implementation and is not VERSION COMPLETE.",
+      "observedV1": {
+        "repository": "KayzenRoot/hive",
+        "mainSha": "0d9240f3a18530fae3e9f65751dbc11491c485c0",
+        "checkpointPath": "docs/project-brain/13-CHECKPOINT.md",
+        "checkpointBlobSha": "ed424362a1bba87c05441a6ea208e913bdea51c9",
+        "versionFileValue": "0.0.1-bootstrap",
+        "phase": "5 — Implementation",
+        "versionComplete": false,
+        "observedChecks": [
+          {
+            "name": "Validate",
+            "state": "SUCCESS"
+          },
+          {
+            "name": "Integration health",
+            "state": "SUCCESS"
+          },
+          {
+            "name": "Review Evidence",
+            "state": "SKIPPED_ON_PUSH"
+          }
+        ]
+      },
+      "requiredBeforePass": [
+        "V1 Definition of Done objectively satisfied",
+        "Final V1 VERSION COMPLETE checkpoint",
+        "Final V1 release/tag/commit/checksum",
+        "Verified recovery/restore evidence",
+        "Required dogfood certification",
+        "Frozen V1 COLD/WARM benchmark baseline",
+        "Non-destructive V1/V2 lineage reconciliation",
+        "Final actual CI/protection configuration",
+        "Checkpoint authorization of first V2 Work Order"
+      ],
+      "issues": [
+        3,
+        5,
+        63,
+        64,
+        65
+      ]
+    }
+  },
+  "process": {
+    "hedsProcessReady": true,
+    "hedsAutomationImplemented": false,
+    "reviewStandardVersion": "v2",
+    "historicalProcessIssuesSuperseded": [
+      2,
+      6
+    ],
+    "hedsAutomationIssue": 75,
+    "firstPlannedProductIncrement": {
+      "issue": 13,
+      "id": "V2-A-001",
+      "title": "Canonical Object & Identity Contract",
+      "authorized": false
+    }
+  },
+  "freshness": {
+    "v1Snapshot": "docs/transition/V1-TRANSITION-READINESS-SNAPSHOT.md",
+    "refreshRules": [
+      "Recompute V1-derived state whenever KayzenRoot/hive main changes materially.",
+      "Recompute this readiness manifest after source-preservation, re-freeze, transition, lineage, dogfood or CI-protection gate changes.",
+      "Checkpoint and canonical sources override this derived manifest if they conflict."
+    ]
+  }
+}
