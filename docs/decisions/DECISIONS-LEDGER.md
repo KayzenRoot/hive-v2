@@ -1,6 +1,6 @@
 # HIVE V2 — Decisions Ledger
 
-This ledger records V2 decisions added by the R21/R22 extension. R01-R20 frozen decisions remain inherited and must not be silently overridden.
+This ledger records V2 decisions added after the R20 historical freeze. R01-R20 frozen decisions remain inherited and must not be silently overridden.
 
 ## HIVE-V2-ADR-019 — Impact-aware selective verification
 Status: ACCEPTED FOR V2 CONSOLIDATION
@@ -25,3 +25,11 @@ Decision: reviews start from immutable identity, fingerprints, changed symbols/c
 ## HIVE-V2-ADR-024 — Proof validity reuse
 Status: EXPERIMENT REQUIRED
 Decision direction: expensive proofs may be reused only when all validity-basis fingerprints remain unchanged. Benchmark false-reuse risk before implementation promotion.
+
+## HIVE-V2-ADR-025 — HIVE Engineering Delivery System (HEDS)
+Status: ACCEPTED
+Decision: use HEDS as the default HIVE V2 implementation delivery/review model and as the reusable engineering process for future projects. Optimize Time-to-Trusted-Merge with machine-readable review identity, risk routing, context capsules, correction deltas, evidence reuse gates, defect learning and modularity/complexity guardrails.
+
+## HIVE-V2-ADR-026 — Template-first project bootstrap
+Status: ACCEPTED
+Decision: future new projects SHOULD begin from the HEDS bootstrap template, defining project-specific product architecture while inheriting repository governance, source hierarchy, checkpoint continuity, Work Order, evidence, test and review contracts unless explicitly overridden by ADR.
