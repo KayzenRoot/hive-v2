@@ -59,6 +59,7 @@ Then retrieve only additional canonical material needed for the requested increm
 - HEDS process, project bootstrap template and HEDS automation epic #75.
 - hardened reusable bootstrap template via PR #98, merge `c89eca74d5c7aac040a2a16b643e795d565bcba1`.
 - stale pre-transition tracker assumptions reconciled under issue #79 without removing valid V1 transition gates.
+- historical process issues #2 (Engineering Delivery Protocol v1.0) and #6 (Sol Audit + PR Evidence Standard) formally closed as superseded; HEDS + Review Standard v2 are current operational authority.
 - HEDS research backlog/issues #81-#97 captured with evidence-gated classifications.
 - exact-source preservation manifest/import procedure.
 - post-preservation reconciliation procedure, Source Pack contract and R22 re-freeze checklist.
