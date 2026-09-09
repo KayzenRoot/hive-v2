@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hive.local/schemas/review-manifest.schema.json",
+  "title": "HIVE Review Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["workOrderId","repository","baseSha","headSha","riskTier","scope","changedFiles","impactedRequirements","selectedVerification","evidence","uncertainties"],
+  "properties": {
+    "workOrderId": {"type":"string","minLength":1},
+    "repository": {"type":"string","minLength":1},
+    "baseSha": {"type":"string","minLength":7},
+    "headSha": {"type":"string","minLength":7},
+    "riskTier": {"enum":["LOW","STANDARD","ELEVATED","HIGH_ASSURANCE"]},
+    "scope": {"type":"array","items":{"type":"string"}},
+    "outOfScope": {"type":"array","items":{"type":"string"}},
+    "changedFiles": {"type":"array","items":{"type":"string"}},
+    "changedSymbols": {"type":"array","items":{"type":"string"}},
+    "impactedRequirements": {"type":"array","items":{"type":"string"}},
+    "impactedContracts": {"type":"array","items":{"type":"string"}},
+    "impactedModules": {"type":"array","items":{"type":"string"}},
+    "selectedVerification": {"type":"array","items":{"type":"object","required":["id","command","reason","result"],"properties":{"id":{"type":"string"},"command":{"type":"string"},"reason":{"type":"string"},"result":{"enum":["PASS","FAIL","SKIP","PENDING"]},"durationMs":{"type":"integer","minimum":0}},"additionalProperties":true}},
+    "reusedProofs": {"type":"array","items":{"type":"object","required":["proofId","fingerprint","validityBasis"],"properties":{"proofId":{"type":"string"},"fingerprint":{"type":"string"},"validityBasis":{"type":"array","items":{"type":"string"}}},"additionalProperties":false}},
+    "evidence": {"type":"array","items":{"type":"string"}},
+    "runtimeJourneys": {"type":"array","items":{"type":"string"}},
+    "securityReviewRequired": {"type":"boolean"},
+    "fullSuiteRequired": {"type":"boolean"},
+    "uncertainties": {"type":"array","items":{"type":"string"}},
+    "reviewAttention": {"type":"array","items":{"type":"object","required":["target","score","reason"],"properties":{"target":{"type":"string"},"score":{"type":"number","minimum":0},"reason":{"type":"string"}},"additionalProperties":false}},
+    "complexityDelta": {"type":"object","additionalProperties":true},
+    "contextFingerprint": {"type":"string"},
+    "proofDecayScore": {"type":"number","minimum":0,"maximum":1}
+  }
+}
