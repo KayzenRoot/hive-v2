@@ -29,12 +29,12 @@
     },
     "v1Transition": {
       "state": "BLOCKED",
-      "blocker": "HIVE V1 is still active implementation and is not VERSION COMPLETE.",
+      "blocker": "HIVE V1 advanced through MCP Read-Only Core approval but is still active implementation and is not VERSION COMPLETE.",
       "observedV1": {
         "repository": "KayzenRoot/hive",
-        "mainSha": "0d9240f3a18530fae3e9f65751dbc11491c485c0",
+        "mainSha": "5e699f1315638a4e767a94bcf6536cd52988ee3b",
         "checkpointPath": "docs/project-brain/13-CHECKPOINT.md",
-        "checkpointBlobSha": "ed424362a1bba87c05441a6ea208e913bdea51c9",
+        "checkpointBlobSha": "d4f941aae5cf37c1012be612dd1a2dd99651742d",
         "versionFileValue": "0.0.1-bootstrap",
         "phase": "5 — Implementation",
         "versionComplete": false,
@@ -51,7 +51,16 @@
             "name": "Review Evidence",
             "state": "SKIPPED_ON_PUSH"
           }
-        ]
+        ],
+        "status": "MCP READ-ONLY CORE SURFACE APPROVED / V0.1 IMPLEMENTATION ACTIVE",
+        "nextStep": "Prepare the smallest necessary autonomous execution pipeline increment.",
+        "checkpointPromotion": {
+          "workOrder": "WO-017-P",
+          "pullRequest": 62,
+          "auditedHead": "bb9be94a361df60db122b8f7b2f41cc5789f1332",
+          "mergeSha": "5e699f1315638a4e767a94bcf6536cd52988ee3b",
+          "postMergeCiRun": 34307232027
+        }
       },
       "requiredBeforePass": [
         "V1 Definition of Done objectively satisfied",
