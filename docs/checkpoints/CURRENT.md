@@ -67,6 +67,7 @@ Then retrieve only additional canonical material needed for the requested increm
 - Exact frozen-master raw source promoted to `IMPORTABLE` with byte length/SHA-256/expected Git blob evidence via PR #101, merge `092e2f7c1ec038a751535a770dbab5f4e83f1e57`.
 - Objective V1 transition-readiness snapshot added via PR #102, merge `832b77e664a21d09d12c30b83808f8ad7b0e6ad0`.
 - Machine-readable implementation readiness snapshot: `docs/transition/V2-IMPLEMENTATION-READINESS.json`.
+- HIVE V1 MCP Read-Only Core checkpoint promotion closed via PR #62, merge `5e699f1315638a4e767a94bcf6536cd52988ee3b`, post-merge CI `34307232027` PASS for Validate + Integration health.
 
 ## Exact source preservation status
 `SOURCE_PRESERVATION_STATE = IMPORTABLE`
@@ -90,7 +91,7 @@ Exact original artifact is now mounted/importable and has passed local identity/
 
 ## Current external blockers
 - exact R01-R20 raw artifact bytes are now locally available and verified; the remaining constraint is that the current GitHub connector write action accepts text/blob content but no direct local-file reference, so the byte-complete archive transfer is not yet committed;
-- final V1 release/lineage evidence remains a separate transition prerequisite. Current observed V1 state is recorded in `docs/transition/V1-TRANSITION-READINESS-SNAPSHOT.md`: V1 main `0d9240f3a18530fae3e9f65751dbc11491c485c0`, VERSION `0.0.1-bootstrap`, implementation active/not VERSION COMPLETE. Current observed checks are `Validate`, `Integration health` and `Review Evidence`, but final inherited check names are not frozen until V1 completion.
+- final V1 release/lineage evidence remains a separate transition prerequisite. Current observed V1 state is recorded in `docs/transition/V1-TRANSITION-READINESS-SNAPSHOT.md`: V1 main `5e699f1315638a4e767a94bcf6536cd52988ee3b`, MCP Read-Only Core approved, VERSION `0.0.1-bootstrap`, implementation active/not VERSION COMPLETE. Current observed checks are `Validate`, `Integration health` and `Review Evidence`, but final inherited check names are not frozen until V1 completion.
 
 ## Next necessary increment
 Transfer the verified exact local bytes of `HIVE-MASTER-SOURCE-V2.0-FROZEN.md` into the Git archive path, verify both Git blob SHA and re-downloaded SHA-256, then execute reconciliation/Source Pack/re-freeze. No HIVE V2 product implementation before those gates.
