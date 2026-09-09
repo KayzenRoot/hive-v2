@@ -22,7 +22,16 @@ HIVE V1 remains the active implementation line until the formal V2 implementatio
 - Canonical review standard: `docs/operations/REVIEW-STANDARD.md`.
 - User-facing executor prompts, when authorized, are delivered as a downloadable PDF only. Do not provide OneBox/copyable full-prompt duplication unless the user explicitly requests it for that delivery.
 - Future HIVE implementation/correction executor prompts use the globally installed UADS workflow where applicable and require UADS runtime/bootstrap evidence.
-- Material reviews preserve the established verdict/evidence/progress/remaining-work/next-step response pattern.
+
+## HEDS engineering delivery truth
+- `HEDS_PROCESS_READY = true` for governance/documentation/process adoption.
+- `HEDS_AUTOMATION_IMPLEMENTED = false` until the review manifest generation, context capsule generation, proof/action cache, risk router, merge-queue integration, learning loop and related runtime tooling are actually implemented/tested.
+- HEDS is the default implementation/review operating model for HIVE V2 once V2 implementation is authorized.
+- Future new projects SHOULD bootstrap from `templates/project-bootstrap/` unless an explicit project ADR chooses otherwise.
+- Primary delivery metric: `Time-to-Trusted-Merge`, not raw review duration.
+- Canonical HEDS source: `docs/operations/ENGINEERING-DELIVERY-SYSTEM.md`.
+- Canonical machine-readable review contract: `docs/review/review-manifest.schema.json`.
+- Canonical decisions: ADR-025 and ADR-026.
 
 ## Fresh-chat bootstrap minimum
 When the user asks to continue from the previous HIVE chat, read at minimum:
@@ -32,7 +41,8 @@ When the user asks to continue from the previous HIVE chat, read at minimum:
 4. `docs/operations/CHAT-CONTINUITY-PROTOCOL.md`;
 5. `docs/operations/RESPONSE-AND-DELIVERY-STANDARD.md`;
 6. `docs/operations/REVIEW-STANDARD.md`;
-7. the active issue/WO/PR/evidence named by the current state.
+7. `docs/operations/ENGINEERING-DELIVERY-SYSTEM.md`;
+8. the active issue/WO/PR/evidence named by the current state.
 
 Then retrieve only the additional scope/DoD/architecture/requirements/round sources necessary for the requested increment.
 
@@ -48,8 +58,12 @@ Then retrieve only the additional scope/DoD/architecture/requirements/round sour
 - Canonical R01-R22 source map added.
 - Memory-independent agent bootstrap contract added.
 - Chat continuity protocol added.
-- Response and executor-prompt delivery standard added.
-- Canonical Sol review standard added.
+- PDF-only response and executor-prompt delivery standard added.
+- Review Standard upgraded to HEDS v2.
+- HEDS engineering delivery system documented.
+- Review Manifest schema added.
+- Future-project bootstrap template added with project charter, quality plan and Work Order template.
+- ADR-025 HEDS adoption and ADR-026 template-first bootstrap recorded.
 - Frozen R01-R20 master identity verified from authoritative project source: `HIVE-MASTER-SOURCE-V2.0-FROZEN.md`, R20 Architecture Freeze Review, 2026-08-31.
 
 ## Exact source preservation status
@@ -61,6 +75,7 @@ Then retrieve only the additional scope/DoD/architecture/requirements/round sour
 - R21/R22 scope/DoD delta.
 - review/evidence/governance contracts.
 - workflow continuity and response-format standards.
+- HEDS process/template contracts.
 
 ### Exact Git import still required
 - `HIVE-MASTER-SOURCE-V2.0-FROZEN.md` containing complete R01-R20 research provenance and frozen architecture/source definition.
@@ -70,13 +85,13 @@ Do not replace this exact historical master with a model-generated reconstructio
 ## Pending before V2 implementation bootstrap
 1. Import the exact immutable `HIVE-MASTER-SOURCE-V2.0-FROZEN.md` into Git.
 2. Record source integrity metadata/hash from the Git-preserved artifact.
-3. Reconcile R21/R22 against complete V2 scope, requirements, architecture and DoD.
+3. Reconcile R21/R22 + HEDS process decisions against complete V2 scope, requirements, architecture and DoD without silently altering frozen product architecture.
 4. Produce compact canonical V2 Source Pack from repository-contained sources.
 5. Perform R22 architecture/source re-freeze audit.
-6. If APPROVED, update checkpoint to `MEMORY_INDEPENDENT = true` and authorize first V2 implementation Work Order.
+6. If APPROVED, update checkpoint to `MEMORY_INDEPENDENT = true` and authorize first V2 implementation Work Order using HEDS.
 
 ## Blocker
-The source itself is known and verified as the approved R20 frozen master, but this environment does not currently expose its raw bytes as a local file that can be uploaded directly through the GitHub connector. Therefore a byte-complete Git import has not been falsely claimed.
+The exact R01-R20 frozen master source itself is known and verified, but this environment does not currently expose its raw bytes as a local file that can be uploaded directly through the GitHub connector. Therefore a byte-complete Git import has not been falsely claimed.
 
 ## Next necessary increment
-Complete exact R01-R20 frozen master Git preservation. No feature implementation before that gate.
+Complete exact R01-R20 frozen master Git preservation. No HIVE V2 feature implementation before that gate.
