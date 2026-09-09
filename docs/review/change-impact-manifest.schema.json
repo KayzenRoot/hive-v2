@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HIVE V2 Change Impact Manifest",
+  "type": "object",
+  "required": ["workOrderId", "baseSha", "headSha", "riskTier", "changedFiles", "impactedFeatures", "selectedVerification", "confidence"],
+  "properties": {
+    "workOrderId": {"type": "string"},
+    "baseSha": {"type": "string"},
+    "headSha": {"type": "string"},
+    "riskTier": {"enum": ["LOW", "STANDARD", "ELEVATED", "HIGH_ASSURANCE"]},
+    "changedFiles": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "changedSymbols": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "impactedFeatures": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "impactedContracts": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "transitiveDependencies": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "selectedVerification": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "reusedProofs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "requiresFullSuite": {"type": "boolean"},
+    "requiresRealUseJourney": {"type": "boolean"},
+    "requiresSecurityReview": {"type": "boolean"},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "uncertainties": {"type": "array", "items": {"type": "string"}},
+    "selectionRationale": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}
