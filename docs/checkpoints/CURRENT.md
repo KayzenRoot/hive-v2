@@ -65,16 +65,16 @@ Then retrieve only additional canonical material needed for the requested increm
 - Frozen R01-R20 master identity verified as `HIVE-MASTER-SOURCE-V2.0-FROZEN.md`, R20 Architecture Freeze Review, 2026-08-31.
 
 ## Exact source preservation status
-`SOURCE_PRESERVATION_STATE = IDENTIFIED`
+`SOURCE_PRESERVATION_STATE = IMPORTABLE`
 
 Repository-contained: R21/R22, integrated architecture, scope/DoD delta, review/evidence/governance contracts, HEDS process/templates/research roadmap, source preservation/import procedure, reconciliation/Source Pack/re-freeze procedures.
 
-Exact Git import still required: `HIVE-MASTER-SOURCE-V2.0-FROZEN.md` with complete R01-R20 provenance/frozen architecture. Do not replace it with reconstruction, summary or search snippets.
+Exact original artifact is now mounted/importable and has passed local identity/provenance/hash preflight. Raw source: 1,334,369 bytes; SHA-256 `990c441d5797ee3f8ec81a1f3337f83bb0516fcc0c2a79ef0ef9f4a150b020ee`; expected exact Git blob SHA `6e2620854cb3180e02ac4c18fe21c93bb5dffdcd`. Exact Git archival commit remains required. Do not replace it with reconstruction, summary or search snippets.
 
 ## Pending before V2 implementation bootstrap
-1. make the exact original R01-R20 master importable by Git write path;
-2. import unchanged to `docs/archive/HIVE-MASTER-SOURCE-V2.0-FROZEN.md` using the canonical procedure;
-3. record SHA-256, byte length where available, Git blob SHA and preserving commit SHA;
+1. import the now-available exact original R01-R20 master unchanged to `docs/archive/HIVE-MASTER-SOURCE-V2.0-FROZEN.md` using the canonical procedure and deterministic importer;
+2. require committed Git blob SHA `6e2620854cb3180e02ac4c18fe21c93bb5dffdcd` and re-downloaded SHA-256 `990c441d5797ee3f8ec81a1f3337f83bb0516fcc0c2a79ef0ef9f4a150b020ee`;
+3. record preserving commit SHA and final preservation evidence;
 4. audit identity/provenance and set source preservation VERIFIED only with objective evidence;
 5. execute R21/R22/HEDS reconciliation procedure;
 6. produce compact canonical V2 Source Pack;
@@ -85,8 +85,8 @@ Exact Git import still required: `HIVE-MASTER-SOURCE-V2.0-FROZEN.md` with comple
 11. implement/test HEDS automation under #75 as governed.
 
 ## Current external blockers
-- exact R01-R20 raw artifact bytes are not exposed through the current file-search surface for byte-complete Git upload/hash verification;
+- exact R01-R20 raw artifact bytes are now locally available and verified; the remaining constraint is that the current GitHub connector write action accepts text/blob content but no direct local-file reference, so the byte-complete archive transfer is not yet committed;
 - final V1 release/lineage evidence and real inherited CI check names remain separate transition prerequisites where required by issues #3/#5/#63/#64/#65.
 
 ## Next necessary increment
-Obtain an exact importable representation of `HIVE-MASTER-SOURCE-V2.0-FROZEN.md`, execute preservation, then reconciliation/Source Pack/re-freeze. No HIVE V2 product implementation before those gates.
+Transfer the verified exact local bytes of `HIVE-MASTER-SOURCE-V2.0-FROZEN.md` into the Git archive path, verify both Git blob SHA and re-downloaded SHA-256, then execute reconciliation/Source Pack/re-freeze. No HIVE V2 product implementation before those gates.
