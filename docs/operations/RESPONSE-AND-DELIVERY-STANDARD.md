@@ -22,7 +22,7 @@ For material HIVE work, responses should preserve this order when applicable:
 6. what is complete;
 7. what remains;
 8. next necessary increment;
-9. downloadable executor prompt when a new implementation/correction increment is authorized.
+9. downloadable executor prompt PDF when a new implementation/correction increment is authorized.
 
 Do not manufacture a next implementation prompt while the current increment is still awaiting evidence, correction or validation.
 
@@ -40,19 +40,15 @@ After a substantive review or approved project-state transition, the user-facing
 
 Percentages and time estimates are planning estimates, not proof. They must be clearly distinguished from objective completion evidence.
 
-## 4. Executor prompt delivery
+## 4. Executor prompt delivery: PDF only
 
-Whenever Sol is authorized to generate a new implementation or corrective executor prompt, deliver the same canonical prompt in two synchronized forms:
+Whenever Sol is authorized to generate a new implementation or corrective executor prompt, the user-facing delivery MUST be a downloadable PDF.
 
-### A. Copyable OneBox
+Do NOT render the executor prompt as a OneBox, writing block, copyable code block, or duplicate full prompt in the chat response unless the user explicitly requests a different format for that specific delivery.
 
-Provide the complete executor prompt in one contiguous copyable block suitable for direct paste into Codex, Cursor or another approved executor. Do not split one executor prompt across multiple disconnected boxes unless a tool limit requires it.
+The PDF is the sole normal user-facing executor-prompt artifact. The response should provide a concise description plus the direct PDF download link.
 
-### B. Downloadable PDF
-
-Generate a PDF containing the same canonical executor prompt and provide a direct download link in the same response.
-
-The OneBox text and PDF MUST be semantically identical. Formatting differences are allowed; requirements, gates, acceptance criteria, tests, deliverables and STOP CONDITION may not diverge.
+The PDF MUST contain the complete canonical executor prompt, including all requirements, gates, acceptance criteria, tests, evidence requirements, deliverables and STOP CONDITION.
 
 ## 5. Canonical executor prompt structure
 
@@ -87,9 +83,11 @@ UADS does not override HIVE governance. HIVE scope, architecture, source hierarc
 
 The executor's final implementation review/evidence summary MUST be in Brazilian Portuguese unless a repository-specific requirement explicitly supersedes it.
 
-## 8. Prompt source retention
+## 8. Canonical prompt retention
 
-For important Work Orders, the repository SHOULD retain the canonical prompt source as text/Markdown associated with the WO or evidence history. The user-facing downloadable PDF is a delivery artifact and must not become the only copy of the instruction.
+For important Work Orders, the repository SHOULD retain the canonical prompt source as text/Markdown associated with the WO or evidence history so instructions remain auditable and diffable in Git. This repository copy is governance evidence, not a second user-facing prompt format.
+
+The user-facing PDF must be generated from or checked against that canonical prompt source so semantic drift cannot occur.
 
 ## 9. No false completion
 
