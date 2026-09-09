@@ -33,3 +33,7 @@ Decision: use HEDS as the default HIVE V2 implementation delivery/review model a
 ## HIVE-V2-ADR-026 — Template-first project bootstrap
 Status: ACCEPTED
 Decision: future new projects SHOULD begin from the HEDS bootstrap template, defining project-specific product architecture while inheriting repository governance, source hierarchy, checkpoint continuity, Work Order, evidence, test and review contracts unless explicitly overridden by ADR.
+
+## HIVE-V2-ADR-027 — Engineering Digital Twin
+Status: EXPERIMENT REQUIRED
+Decision direction: evaluate a bounded, derived, incrementally reconciled Engineering Digital Twin connecting requirements, decisions, code, contracts, tests, runtime journeys, incidents and evidence. It must remain deterministic-first, confidence/freshness aware, local-first and non-canonical. It does not expand frozen HIVE V2 NECESSARY scope without later evidence and governance.
