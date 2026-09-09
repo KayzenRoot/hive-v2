@@ -26,7 +26,7 @@ A later approved source may supersede an earlier one only through an explicit de
 | Range | Subject | Repository status | Canonical source |
 |---|---|---|---|
 | V0.1 | approved inherited baseline | available as project source; repository preservation increment in progress | `HIVE-MASTER-SOURCE-V0.1.md` source artifact |
-| R01-R20 | frozen V2 architecture/source-definition research provenance | EXACT FROZEN MASTER IMPORT REQUIRED | `HIVE-MASTER-SOURCE-V2.0-FROZEN.md` |
+| R01-R20 | frozen V2 architecture/source-definition research provenance | IMPORTABLE / EXACT GIT ARCHIVAL PRESERVATION PENDING | `HIVE-MASTER-SOURCE-V2.0-FROZEN.md` → target `docs/archive/HIVE-MASTER-SOURCE-V2.0-FROZEN.md` |
 | R21 | Test Intelligence, Selective Verification and Real-Use Quality Engineering | versioned | `docs/research/rounds/R21-TEST-INTELLIGENCE.md` |
 | R22 | Debugging, Defect Localization and Verified Repair Intelligence | versioned | `docs/research/rounds/R22-DEBUGGING-DEFECT-INTELLIGENCE.md` |
 | R21-R22 integrated architecture | test/debug intelligence architecture | versioned | `docs/architecture/TEST-DEBUG-INTELLIGENCE-ARCHITECTURE.md` |
@@ -44,6 +44,20 @@ Expected header identity:
 - Freeze meaning: architecture/source definition frozen, NOT implementation complete.
 
 The frozen master explicitly exists to prevent project design from fragmenting across chats, isolated notes, temporary prompts, model memory, or partially overlapping documents. The exact artifact therefore must be preserved in Git before repository-complete R01-R22 canonical history can be claimed.
+
+## Current R01-R20 preservation state
+
+`SOURCE_PRESERVATION_STATE = IMPORTABLE`
+
+The exact original artifact is available and has passed raw-source preflight:
+- byte length: `1,334,369`;
+- SHA-256: `990c441d5797ee3f8ec81a1f3337f83bb0516fcc0c2a79ef0ef9f4a150b020ee`;
+- expected exact Git blob SHA: `6e2620854cb3180e02ac4c18fe21c93bb5dffdcd`;
+- V0.1 inherited baseline: PASS;
+- R01-R20 provenance: PASS;
+- reconstruction used: NO.
+
+This does not yet satisfy repository preservation. The archive path must contain the exact bytes and be independently verified before the state becomes `VERIFIED`.
 
 ## Round index
 
