@@ -35,6 +35,8 @@ Required identity when applicable:
 - evidence references;
 - uncertainties.
 
+`Completed` is never sufficient proof.
+
 ## 3. Risk-adaptive review
 
 ### LOW
@@ -55,7 +57,22 @@ Default: independent verification where feasible, adversarial/property/fuzz/muta
 
 Uncertainty escalates review depth. It never reduces it.
 
-## 4. Delta-first review sequence
+## 4. Governance verdicts
+
+Every material implementation/correction review MUST end in exactly one verdict:
+
+### APPROVED
+The increment satisfies its current acceptance and evidence gate. Sol may update execution truth/checkpoint and define the next NECESSARY increment.
+
+### CORRECTION REQUIRED
+The increment has correctable defects or missing evidence. Generate only the corrective increment. Do not advance unrelated work.
+
+### BLOCKED
+A prerequisite, access constraint, contradiction or unresolved risk prevents safe progression. Resolve the blocker before advancing.
+
+Known CRITICAL/HIGH-severity defects block advancement.
+
+## 5. Delta-first review sequence
 
 1. Context Lock: base/head/WO/risk/canonical fingerprints.
 2. Review Manifest / Change Impact Manifest.
@@ -68,7 +85,7 @@ Uncertainty escalates review depth. It never reduces it.
 9. dependency neighborhoods.
 10. repo-wide context only when risk/uncertainty justifies expansion.
 
-## 5. Correction Delta Protocol
+## 6. Correction Delta Protocol
 
 For CORRECTION REQUIRED, the next review starts from rejected-head → corrected-head.
 
@@ -81,7 +98,7 @@ Re-check:
 
 Reuse prior accepted evidence only when its validity fingerprint remains unchanged. Do not restart the complete review from zero by default.
 
-## 6. Proof Cache and proof decay
+## 7. Proof Cache and proof decay
 
 Reusable proof must declare its validity basis. A changed code/test/fixture/config/lockfile/schema/toolchain/runtime/environment assumption invalidates reuse when relevant.
 
@@ -89,7 +106,7 @@ Reusable proof must declare its validity basis. A changed code/test/fixture/conf
 
 Cache reuse MUST be auditable. `cached` is not equivalent to `trusted` without a valid key/fingerprint.
 
-## 7. Review Attention Router
+## 8. Review Attention Router
 
 Review order should prioritize expected information value using signals such as:
 - consequence of failure;
@@ -103,7 +120,7 @@ Review order should prioritize expected information value using signals such as:
 
 This ranking optimizes time-to-falsification while preserving the right to expand the review.
 
-## 8. Required quality checks
+## 9. Required quality checks
 
 Audit, when applicable, for:
 - missing requirements;
@@ -125,7 +142,7 @@ Audit, when applicable, for:
 - unexpected background work/agent fan-out/quota use;
 - installer/upgrade/restart/recovery behavior.
 
-## 9. Complexity Budget Gate
+## 10. Complexity Budget Gate
 
 A Work Order should disclose meaningful increases in:
 - modules/dependencies;
@@ -139,7 +156,7 @@ A Work Order should disclose meaningful increases in:
 
 Complexity beyond what approved requirements need requires explicit justification. Prefer simpler compatible implementations.
 
-## 10. Merge confidence
+## 11. Merge confidence
 
 The primary optimization target is `Time-to-Trusted-Merge` (TTTM), measured from executor start until objectively trusted merge.
 
@@ -147,7 +164,7 @@ A faster review that increases correction cycles or escaped defects is not an im
 
 Where platform support and repository policy allow, a Trusted Merge Queue SHOULD revalidate the exact integration state and required checks before merge.
 
-## 11. Defect Learning Loop
+## 12. Defect Learning Loop
 
 Every material escaped defect and useful pre-merge catch SHOULD record:
 - triggering change;
@@ -162,7 +179,7 @@ Every material escaped defect and useful pre-merge catch SHOULD record:
 
 This record feeds R21/R22 defect memory, Regression Escape Radar and future review/test selection.
 
-## 12. User-facing review response
+## 13. User-facing review response
 
 When applicable, present:
 1. `VERDICT` prominently;
@@ -179,7 +196,7 @@ When applicable, present:
 
 Do not provide OneBox/copyable full prompt unless the user explicitly requests that specific format.
 
-## 13. Review statistics
+## 14. Review statistics
 
 Track when available:
 - TTTM;
@@ -199,7 +216,7 @@ Track when available:
 - complexity delta;
 - rework cause.
 
-## 14. Repository update after review
+## 15. Repository update after review
 
 After APPROVED merge or material governance transition:
 - update `docs/checkpoints/CURRENT.md`;
@@ -208,6 +225,6 @@ After APPROVED merge or material governance transition:
 - preserve evidence identity;
 - make the next necessary increment discoverable from Git alone.
 
-## 15. STOP rule
+## 16. STOP rule
 
 Do not produce the next implementation Work Order while the current increment is CORRECTION REQUIRED, BLOCKED, awaiting mandatory CI/evidence, or otherwise not objectively validated.
