@@ -20,7 +20,7 @@ HIVE V1 remains the active implementation line until the formal V2 implementatio
 - Canonical continuity protocol: `docs/operations/CHAT-CONTINUITY-PROTOCOL.md`.
 - Canonical response/prompt delivery standard: `docs/operations/RESPONSE-AND-DELIVERY-STANDARD.md`.
 - Canonical review standard: `docs/operations/REVIEW-STANDARD.md`.
-- User-facing executor prompts, when authorized, are delivered as one complete copyable OneBox plus a downloadable PDF containing the same canonical prompt.
+- User-facing executor prompts, when authorized, are delivered as a downloadable PDF only. Do not provide OneBox/copyable full-prompt duplication unless the user explicitly requests it for that delivery.
 - Future HIVE implementation/correction executor prompts use the globally installed UADS workflow where applicable and require UADS runtime/bootstrap evidence.
 - Material reviews preserve the established verdict/evidence/progress/remaining-work/next-step response pattern.
 
