@@ -33,6 +33,7 @@ HIVE V1 remains the active implementation line until the formal V2 implementatio
 - Canonical HEDS source: `docs/operations/ENGINEERING-DELIVERY-SYSTEM.md`.
 - Canonical machine-readable review contract: `docs/review/review-manifest.schema.json`.
 - Canonical decisions: ADR-025 and ADR-026.
+- Engineering Digital Twin (EDT) is recorded by ADR-027 as `IMPORTANT / EXPERIMENT REQUIRED`; it is not a V2 completion blocker and does not expand frozen NECESSARY scope.
 
 ## Fresh-chat bootstrap minimum
 When the user asks to continue from the previous HIVE chat, read at minimum:
@@ -66,6 +67,7 @@ Then retrieve only the additional scope/DoD/architecture/requirements/round sour
 - Future-project bootstrap template added with project charter, quality plan and Work Order template.
 - ADR-025 HEDS adoption and ADR-026 template-first bootstrap recorded.
 - HEDS automation epic #75 recorded and gated.
+- EDT research direction and ADR-027 documented without scope promotion.
 - Frozen R01-R20 master identity verified from authoritative project source: `HIVE-MASTER-SOURCE-V2.0-FROZEN.md`, R20 Architecture Freeze Review, 2026-08-31.
 
 ## Exact source preservation status
