@@ -58,7 +58,14 @@ The exact source is committed to the archive path and preservation evidence/hash
 ### VERIFIED
 A Sol audit confirms identity, provenance, hash evidence and archive immutability requirements.
 
-Current state: `IDENTIFIED`.
+Current state: `IMPORTABLE`.
+
+Current raw-source evidence:
+- byte length: `1334369`;
+- SHA-256: `990c441d5797ee3f8ec81a1f3337f83bb0516fcc0c2a79ef0ef9f4a150b020ee`;
+- expected Git blob SHA: `6e2620854cb3180e02ac4c18fe21c93bb5dffdcd`;
+- evidence: `docs/evidence/source-preservation/HIVE-MASTER-SOURCE-V2.0-FROZEN-EVIDENCE.md`;
+- exact archive commit remains pending.
 
 ## Promotion gates
 
