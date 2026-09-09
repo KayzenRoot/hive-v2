@@ -1,74 +1,111 @@
-# HIVE — Review Standard
+# HIVE — Review Standard v2
 
 Status: CANONICAL OPERATING STANDARD
-Purpose: preserve the established Sol review format, evidence expectations and correction flow across chats.
+Purpose: maximize quality and minimize Time-to-Trusted-Merge using risk-adaptive, evidence-driven, delta-first review.
 
 ## 1. Review source order
 
 Before a material verdict, consult in this order:
-
 1. `docs/checkpoints/CURRENT.md`
 2. `docs/decisions/DECISIONS-LEDGER.md`
 3. approved scope
 4. Definition of Done
 5. architecture
 6. requirements
-7. relevant round/work-order/evidence sources
+7. relevant Work Order / Review Manifest / Evidence Bundle / round sources
 
 Never silently override an approved decision.
 
-## 2. Required review evidence
+## 2. Review entrypoint
 
-A review should obtain, when applicable:
+The preferred machine-readable entrypoint is `docs/review/review-manifest.schema.json` instantiated for the active Work Order/PR.
 
-- base/head SHA and branch/PR identity;
-- Work Order / issue identity;
-- changed files and relevant symbols/contracts;
-- scope and architecture impact;
-- selected tests and results;
-- lint/typecheck/build results;
-- security checks;
-- runtime/real-use/resource-behavior evidence;
-- errors found and corrections made;
-- pending risks;
-- diff/evidence references;
-- proposed checkpoint update.
+The reviewer begins from immutable identity and the smallest trustworthy evidence surface rather than scanning the whole repository.
 
-`Completed` is never sufficient proof.
+Required identity when applicable:
+- Work Order / issue;
+- repository;
+- branch/PR;
+- base/head SHA;
+- risk tier;
+- scope/out-of-scope;
+- changed files/symbols;
+- impacted requirements/contracts/modules;
+- selected verification;
+- evidence references;
+- uncertainties.
 
-## 3. Sol verdicts
+## 3. Risk-adaptive review
 
-Every material implementation/correction review ends in exactly one governance verdict:
+### LOW
+Documentation, non-executable metadata, narrow cosmetic changes with no contract/runtime impact.
+Default: identity, scope, diff, docs/link validation as applicable.
 
-### APPROVED
-The increment satisfies its current acceptance/evidence gate. Sol may update execution truth/checkpoint and define the next necessary increment.
+### STANDARD
+Ordinary isolated implementation changes.
+Default: impact analysis, selected tests, lint/typecheck/build as applicable, contract review, targeted runtime evidence.
 
-### CORRECTION REQUIRED
-The increment has correctable defects or missing evidence. Generate only the corrective increment. Do not advance unrelated work.
+### ELEVATED
+Cross-module changes, public APIs, persistence, migrations, concurrency, agents, deployment/runtime behavior, dependency/toolchain changes or areas with recent defects.
+Default: broader dependency verification, real-use journey, stronger security/data-integrity review, selector confidence checks.
 
-### BLOCKED
-A prerequisite, access constraint, contradiction or high-risk unresolved issue prevents safe progression. Resolve the blocker before advancing.
+### HIGH_ASSURANCE
+Authentication/authorization, secrets, critical persistence, financial/security-sensitive paths, core orchestration, high-blast-radius migrations, release-critical contracts.
+Default: independent verification where feasible, adversarial/property/fuzz/mutation/formal techniques where justified, full-suite or policy-mandated broader verification, no aggressive proof reuse.
 
-Known CRITICAL/HIGH-severity defects block advancement.
+Uncertainty escalates review depth. It never reduces it.
 
-## 4. Delta-first review
+## 4. Delta-first review sequence
 
-Review the smallest trustworthy evidence surface first:
+1. Context Lock: base/head/WO/risk/canonical fingerprints.
+2. Review Manifest / Change Impact Manifest.
+3. Work Intent Graph and impacted contracts.
+4. selected verification + Evidence Bundle.
+5. highest Review Attention Router targets.
+6. changed symbols and patches.
+7. runtime/resource behavior when applicable.
+8. architecture/security/data integrity/modular-boundary checks.
+9. dependency neighborhoods.
+10. repo-wide context only when risk/uncertainty justifies expansion.
 
-1. identity/context lock;
-2. change impact;
-3. changed symbols/contracts;
-4. selected verification and evidence bundle;
-5. affected patches/files;
-6. dependency neighborhoods;
-7. repo-wide context only when uncertainty/risk requires expansion.
+## 5. Correction Delta Protocol
 
-For correction reviews, reuse prior valid evidence when its proof fingerprint remains valid. Re-audit the corrective delta first instead of restarting the entire review from zero.
+For CORRECTION REQUIRED, the next review starts from rejected-head → corrected-head.
 
-## 5. What Sol must check
+Re-check:
+- unresolved findings;
+- files/symbols touched by the correction;
+- evidence invalidated by the correction;
+- newly introduced impacts;
+- newly supplied tests/evidence.
 
-Audit specifically for:
+Reuse prior accepted evidence only when its validity fingerprint remains unchanged. Do not restart the complete review from zero by default.
 
+## 6. Proof Cache and proof decay
+
+Reusable proof must declare its validity basis. A changed code/test/fixture/config/lockfile/schema/toolchain/runtime/environment assumption invalidates reuse when relevant.
+
+`Proof Decay Index` may prioritize re-verification. High uncertainty, stale dependencies, flaky history, selector misses or runtime drift increase decay.
+
+Cache reuse MUST be auditable. `cached` is not equivalent to `trusted` without a valid key/fingerprint.
+
+## 7. Review Attention Router
+
+Review order should prioritize expected information value using signals such as:
+- consequence of failure;
+- uncertainty/novelty;
+- contract centrality;
+- historical defect density;
+- dependency fan-in/fan-out;
+- runtime/resource side effects;
+- security/data-integrity sensitivity;
+- test weakness/selector miss history.
+
+This ranking optimizes time-to-falsification while preserving the right to expand the review.
+
+## 8. Required quality checks
+
+Audit, when applicable, for:
 - missing requirements;
 - scope creep;
 - regressions;
@@ -76,53 +113,101 @@ Audit specifically for:
 - data-integrity problems;
 - broken contracts;
 - architecture violations;
+- modular-boundary drift/cycles;
 - error-handling gaps;
-- insufficient or superficial tests;
+- insufficient/superficial tests;
 - operational/resource-behavior failures;
 - unnecessary complexity;
 - incorrect checkpoint claims;
-- stale or invalid reused proof.
+- stale proof reuse;
+- flaky tests;
+- performance regressions;
+- unexpected background work/agent fan-out/quota use;
+- installer/upgrade/restart/recovery behavior.
 
-Do not add unrelated improvements during a correction review.
+## 9. Complexity Budget Gate
 
-## 6. User-facing review response pattern
+A Work Order should disclose meaningful increases in:
+- modules/dependencies;
+- public surface;
+- mutable state;
+- execution paths;
+- background workers/agents;
+- external calls;
+- configuration;
+- long-lived abstractions.
+
+Complexity beyond what approved requirements need requires explicit justification. Prefer simpler compatible implementations.
+
+## 10. Merge confidence
+
+The primary optimization target is `Time-to-Trusted-Merge` (TTTM), measured from executor start until objectively trusted merge.
+
+A faster review that increases correction cycles or escaped defects is not an improvement.
+
+Where platform support and repository policy allow, a Trusted Merge Queue SHOULD revalidate the exact integration state and required checks before merge.
+
+## 11. Defect Learning Loop
+
+Every material escaped defect and useful pre-merge catch SHOULD record:
+- triggering change;
+- symptom;
+- root cause;
+- affected feature/module;
+- why existing tests/review missed or caught it;
+- minimal reproducer;
+- permanent regression test;
+- selector/impact-map update;
+- review rule or architecture lesson, if applicable.
+
+This record feeds R21/R22 defect memory, Regression Escape Radar and future review/test selection.
+
+## 12. User-facing review response
 
 When applicable, present:
-
 1. `VERDICT` prominently;
 2. what was reviewed;
 3. key findings;
-4. evidence/tests and results;
-5. defects/corrections, if any;
+4. evidence/tests/results;
+5. defects/corrections;
 6. changed files / PR / merge state;
 7. risk status;
-8. project progress snapshot with percentage/time estimate when reasonably inferable;
+8. compact project progress snapshot with percentage/time estimate when reasonably inferable;
 9. completed vs remaining work;
 10. next step;
-11. next executor prompt only if the gate authorizes it, delivered as OneBox + PDF.
+11. next executor prompt PDF only when the gate authorizes it.
 
-## 7. Review statistics
+Do not provide OneBox/copyable full prompt unless the user explicitly requests that specific format.
 
-Track and surface, when available:
+## 13. Review statistics
 
-- tests run / passed / failed / skipped;
-- lint/typecheck/build state;
-- affected-test selection vs full suite when R21 mechanisms exist;
-- review correction cycles;
-- regressions caught before merge;
-- selector misses / shadow-suite divergence;
-- fresh/cached/reused evidence where available;
-- current version completion estimate.
+Track when available:
+- TTTM;
+- executor orientation time;
+- implementation time;
+- tests run/pass/fail/skip;
+- selected/full-suite ratio;
+- time-to-first-failure;
+- verification/review wall-clock;
+- build/test/proof cache hit rate;
+- context tokens and context signal ratio;
+- correction cycles;
+- regressions caught pre-merge;
+- escaped defects;
+- selector misses/shadow-suite divergence;
+- flaky test rate;
+- complexity delta;
+- rework cause.
 
-## 8. Repository update after review
+## 14. Repository update after review
 
 After APPROVED merge or material governance transition:
-
 - update `docs/checkpoints/CURRENT.md`;
-- update issue/WO/PR state as applicable;
-- record approved ADR/decision deltas when necessary;
-- make next necessary increment discoverable from Git alone.
+- update issue/WO/PR state;
+- record ADR/decision delta when needed;
+- preserve evidence identity;
+- make the next necessary increment discoverable from Git alone.
 
-## 9. STOP rule
+## 15. STOP rule
 
-Do not produce the next implementation Work Order while the current increment is `CORRECTION REQUIRED`, `BLOCKED`, awaiting required CI/evidence, or otherwise not objectively validated.
+Do not produce the next implementation Work Order while the current increment is CORRECTION REQUIRED, BLOCKED, awaiting mandatory CI/evidence, or otherwise not objectively validated.
