@@ -86,7 +86,7 @@ Exact original artifact is now mounted/importable and has passed local identity/
 
 ## Current external blockers
 - exact R01-R20 raw artifact bytes are now locally available and verified; the remaining constraint is that the current GitHub connector write action accepts text/blob content but no direct local-file reference, so the byte-complete archive transfer is not yet committed;
-- final V1 release/lineage evidence and real inherited CI check names remain separate transition prerequisites where required by issues #3/#5/#63/#64/#65.
+- final V1 release/lineage evidence remains a separate transition prerequisite. Current observed V1 state is recorded in `docs/transition/V1-TRANSITION-READINESS-SNAPSHOT.md`: V1 main `0d9240f3a18530fae3e9f65751dbc11491c485c0`, VERSION `0.0.1-bootstrap`, implementation active/not VERSION COMPLETE. Current observed checks are `Validate`, `Integration health` and `Review Evidence`, but final inherited check names are not frozen until V1 completion.
 
 ## Next necessary increment
 Transfer the verified exact local bytes of `HIVE-MASTER-SOURCE-V2.0-FROZEN.md` into the Git archive path, verify both Git blob SHA and re-downloaded SHA-256, then execute reconciliation/Source Pack/re-freeze. No HIVE V2 product implementation before those gates.
