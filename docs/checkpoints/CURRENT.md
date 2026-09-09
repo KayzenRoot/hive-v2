@@ -71,6 +71,9 @@ Then retrieve only the additional scope/DoD/architecture/requirements/round sour
 - Frozen R01-R20 master identity verified from authoritative project source: `HIVE-MASTER-SOURCE-V2.0-FROZEN.md`, R20 Architecture Freeze Review, 2026-08-31.
 - Exact-source preservation manifest added: `docs/source/SOURCE-PRESERVATION-MANIFEST.md`.
 - Exact frozen-master import procedure added: `docs/source/MASTER-IMPORT-PROCEDURE.md`.
+- Post-preservation reconciliation procedure added: `docs/source/R21-R22-HEDS-RECONCILIATION-PROCEDURE.md`.
+- Compact Source Pack contract added: `docs/source/V2-SOURCE-PACK-CONTRACT.md`.
+- R22 re-freeze audit checklist added: `docs/review/R22-REFREEZE-AUDIT-CHECKLIST.md`.
 
 ## Exact source preservation status
 
@@ -85,6 +88,7 @@ Then retrieve only the additional scope/DoD/architecture/requirements/round sour
 - workflow continuity and response-format standards.
 - HEDS process/template contracts.
 - preservation manifest and import procedure.
+- reconciliation, Source Pack and re-freeze readiness procedures.
 
 ### Exact Git import still required
 - `HIVE-MASTER-SOURCE-V2.0-FROZEN.md` containing complete R01-R20 research provenance and frozen architecture/source definition.
@@ -96,9 +100,9 @@ Do not replace this exact historical master with a model-generated reconstructio
 2. Import it unchanged to `docs/archive/HIVE-MASTER-SOURCE-V2.0-FROZEN.md` following `docs/source/MASTER-IMPORT-PROCEDURE.md`.
 3. Record source SHA-256, byte length when available, Git blob SHA and preserving commit SHA.
 4. Audit header identity and complete R01-R20 provenance; promote `SOURCE_PRESERVATION_STATE` to VERIFIED only with objective evidence.
-5. Reconcile R21/R22 + HEDS process decisions against complete V2 scope, requirements, architecture and DoD without silently altering frozen product architecture.
-6. Produce compact canonical V2 Source Pack from repository-contained sources.
-7. Perform R22 architecture/source re-freeze audit.
+5. Execute `docs/source/R21-R22-HEDS-RECONCILIATION-PROCEDURE.md`.
+6. Produce compact canonical V2 Source Pack according to `docs/source/V2-SOURCE-PACK-CONTRACT.md`.
+7. Perform R22 architecture/source re-freeze using `docs/review/R22-REFREEZE-AUDIT-CHECKLIST.md`.
 8. If APPROVED, update checkpoint to `MEMORY_INDEPENDENT = true` and authorize first V2 implementation Work Order using HEDS.
 9. Begin HEDS automation implementation under issue #75 as part of the approved implementation program.
 
