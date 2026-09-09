@@ -22,7 +22,7 @@ Reviewer: Sol
 - BOM: absent
 - line endings: LF only
 - CRLF count: 0
-- line count: 51555 newline characters / 51556 logical lines
+- line count: 51555 text lines; file ends with LF
 - reconstruction used: NO
 
 ## Provenance audit
