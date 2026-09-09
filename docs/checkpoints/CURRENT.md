@@ -69,8 +69,12 @@ Then retrieve only the additional scope/DoD/architecture/requirements/round sour
 - HEDS automation epic #75 recorded and gated.
 - EDT research direction and ADR-027 documented without scope promotion.
 - Frozen R01-R20 master identity verified from authoritative project source: `HIVE-MASTER-SOURCE-V2.0-FROZEN.md`, R20 Architecture Freeze Review, 2026-08-31.
+- Exact-source preservation manifest added: `docs/source/SOURCE-PRESERVATION-MANIFEST.md`.
+- Exact frozen-master import procedure added: `docs/source/MASTER-IMPORT-PROCEDURE.md`.
 
 ## Exact source preservation status
+
+`SOURCE_PRESERVATION_STATE = IDENTIFIED`
 
 ### Repository-contained
 - R21 round specification.
@@ -80,23 +84,26 @@ Then retrieve only the additional scope/DoD/architecture/requirements/round sour
 - review/evidence/governance contracts.
 - workflow continuity and response-format standards.
 - HEDS process/template contracts.
+- preservation manifest and import procedure.
 
 ### Exact Git import still required
 - `HIVE-MASTER-SOURCE-V2.0-FROZEN.md` containing complete R01-R20 research provenance and frozen architecture/source definition.
 
-Do not replace this exact historical master with a model-generated reconstruction or summary. A compact Source Pack may be generated only as a derived execution artifact after the immutable master is preserved.
+Do not replace this exact historical master with a model-generated reconstruction or summary. Search snippets, partially rendered content and model-visible excerpts are insufficient for byte-complete archival preservation.
 
 ## Pending before V2 implementation bootstrap
-1. Import the exact immutable `HIVE-MASTER-SOURCE-V2.0-FROZEN.md` into Git.
-2. Record source integrity metadata/hash from the Git-preserved artifact.
-3. Reconcile R21/R22 + HEDS process decisions against complete V2 scope, requirements, architecture and DoD without silently altering frozen product architecture.
-4. Produce compact canonical V2 Source Pack from repository-contained sources.
-5. Perform R22 architecture/source re-freeze audit.
-6. If APPROVED, update checkpoint to `MEMORY_INDEPENDENT = true` and authorize first V2 implementation Work Order using HEDS.
-7. Begin HEDS automation implementation under issue #75 as part of the approved implementation program.
+1. Make the exact original `HIVE-MASTER-SOURCE-V2.0-FROZEN.md` artifact importable by the Git write path.
+2. Import it unchanged to `docs/archive/HIVE-MASTER-SOURCE-V2.0-FROZEN.md` following `docs/source/MASTER-IMPORT-PROCEDURE.md`.
+3. Record source SHA-256, byte length when available, Git blob SHA and preserving commit SHA.
+4. Audit header identity and complete R01-R20 provenance; promote `SOURCE_PRESERVATION_STATE` to VERIFIED only with objective evidence.
+5. Reconcile R21/R22 + HEDS process decisions against complete V2 scope, requirements, architecture and DoD without silently altering frozen product architecture.
+6. Produce compact canonical V2 Source Pack from repository-contained sources.
+7. Perform R22 architecture/source re-freeze audit.
+8. If APPROVED, update checkpoint to `MEMORY_INDEPENDENT = true` and authorize first V2 implementation Work Order using HEDS.
+9. Begin HEDS automation implementation under issue #75 as part of the approved implementation program.
 
 ## Blocker
-The exact R01-R20 frozen master source itself is known and verified, but this environment does not currently expose its raw bytes as a local file that can be uploaded directly through the GitHub connector. Therefore a byte-complete Git import has not been falsely claimed.
+The exact R01-R20 frozen master is confirmed in the project File Library and can be inspected, but the current file-search surface exposes rendered/search content rather than a raw local/mounted file suitable for exact Git upload and byte-hash verification. Therefore `SOURCE_PRESERVATION_STATE` remains IDENTIFIED and no reconstructed substitute is permitted.
 
 ## Next necessary increment
-Complete exact R01-R20 frozen master Git preservation. No HIVE V2 feature implementation before that gate.
+Obtain an exact importable representation of `HIVE-MASTER-SOURCE-V2.0-FROZEN.md`, then execute the preservation procedure. No HIVE V2 feature implementation before that gate.
