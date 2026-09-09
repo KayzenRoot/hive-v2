@@ -26,6 +26,7 @@ HIVE V1 remains the active implementation line until the formal V2 implementatio
 ## HEDS engineering delivery truth
 - `HEDS_PROCESS_READY = true` for governance/documentation/process adoption.
 - `HEDS_AUTOMATION_IMPLEMENTED = false` until the review manifest generation, context capsule generation, proof/action cache, risk router, merge-queue integration, learning loop and related runtime tooling are actually implemented/tested.
+- HEDS automation implementation epic: GitHub issue #75, blocked until the R22 source re-freeze is APPROVED.
 - HEDS is the default implementation/review operating model for HIVE V2 once V2 implementation is authorized.
 - Future new projects SHOULD bootstrap from `templates/project-bootstrap/` unless an explicit project ADR chooses otherwise.
 - Primary delivery metric: `Time-to-Trusted-Merge`, not raw review duration.
@@ -64,6 +65,7 @@ Then retrieve only the additional scope/DoD/architecture/requirements/round sour
 - Review Manifest schema added.
 - Future-project bootstrap template added with project charter, quality plan and Work Order template.
 - ADR-025 HEDS adoption and ADR-026 template-first bootstrap recorded.
+- HEDS automation epic #75 recorded and gated.
 - Frozen R01-R20 master identity verified from authoritative project source: `HIVE-MASTER-SOURCE-V2.0-FROZEN.md`, R20 Architecture Freeze Review, 2026-08-31.
 
 ## Exact source preservation status
@@ -89,6 +91,7 @@ Do not replace this exact historical master with a model-generated reconstructio
 4. Produce compact canonical V2 Source Pack from repository-contained sources.
 5. Perform R22 architecture/source re-freeze audit.
 6. If APPROVED, update checkpoint to `MEMORY_INDEPENDENT = true` and authorize first V2 implementation Work Order using HEDS.
+7. Begin HEDS automation implementation under issue #75 as part of the approved implementation program.
 
 ## Blocker
 The exact R01-R20 frozen master source itself is known and verified, but this environment does not currently expose its raw bytes as a local file that can be uploaded directly through the GitHub connector. Therefore a byte-complete Git import has not been falsely claimed.
