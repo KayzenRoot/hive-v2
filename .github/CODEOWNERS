@@ -1,0 +1,9 @@
+# Default repository ownership
+* @KayzenRoot
+
+# Canonical governance and architecture
+/docs/checkpoints/ @KayzenRoot
+/docs/decisions/ @KayzenRoot
+/docs/architecture/ @KayzenRoot
+/docs/scope/ @KayzenRoot
+/docs/definition-of-done/ @KayzenRoot
