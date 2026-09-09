@@ -36,12 +36,22 @@ The compact Source Pack is an execution index. It is not permission to delete, r
 
 ## Implementation authorization gate
 
-Do not generate or execute the first HIVE V2 implementation Work Order until:
-- complete exact R01-R20 frozen source is in Git;
-- R21/R22 reconciliation is complete;
-- compact V2 Source Pack exists;
+Do not generate or execute the first HIVE V2 product implementation Work Order until BOTH source/re-freeze and V1→V2 transition gates pass.
+
+Source/re-freeze gates:
+- exact R01-R20 frozen source is preserved and VERIFIED in Git;
+- R21/R22/HEDS reconciliation is APPROVED;
+- compact V2 Source Pack exists and is validated;
 - R22 architecture/source re-freeze audit verdict is APPROVED;
-- checkpoint explicitly authorizes implementation.
+- `MEMORY_INDEPENDENT = true`.
+
+Transition gates:
+- HIVE V1 is objectively `VERSION COMPLETE` under its own Definition of Done;
+- final V1 release/tag/commit/checksum and recovery/baseline evidence are resolved;
+- V1 dogfood/engineering-host gate is satisfied as required;
+- V1/V2 lineage is reconciled non-destructively while preserving current V2 governance history;
+- final inherited CI/protection policy is configured from actual final workflows/checks;
+- current V2 checkpoint explicitly authorizes the first bounded implementation Work Order.
 
 ## Review rule
 

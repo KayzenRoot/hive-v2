@@ -7,7 +7,7 @@ Date: 2026-09-08
 HIVE V1 remains the active implementation line until the formal V2 implementation transition is approved.
 
 ## V2 planning truth
-- R01-R20: historical architecture freeze preserved externally; exact frozen master artifact is identified but still requires byte-complete Git import.
+- R01-R20: exact original frozen master is locally available and preflight-verified as IMPORTABLE; byte-complete Git archival preservation remains pending.
 - R21: Test Intelligence planned and documented in Git.
 - R22: Debugging & Defect Intelligence planned and documented in Git.
 - V2 target planning sequence: R01-R22.
@@ -63,6 +63,8 @@ Then retrieve only additional canonical material needed for the requested increm
 - exact-source preservation manifest/import procedure.
 - post-preservation reconciliation procedure, Source Pack contract and R22 re-freeze checklist.
 - Frozen R01-R20 master identity verified as `HIVE-MASTER-SOURCE-V2.0-FROZEN.md`, R20 Architecture Freeze Review, 2026-08-31.
+- Exact frozen-master raw source promoted to `IMPORTABLE` with byte length/SHA-256/expected Git blob evidence via PR #101, merge `092e2f7c1ec038a751535a770dbab5f4e83f1e57`.
+- Objective V1 transition-readiness snapshot added via PR #102, merge `832b77e664a21d09d12c30b83808f8ad7b0e6ad0`.
 
 ## Exact source preservation status
 `SOURCE_PRESERVATION_STATE = IMPORTABLE`
